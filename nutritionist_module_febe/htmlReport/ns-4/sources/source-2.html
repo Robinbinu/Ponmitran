@@ -1,0 +1,224 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MaladiePlante</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.diagnoPlant.models</a>
+</div>
+
+<h1>Coverage Summary for Class: MaladiePlante (com.diagnoPlant.models)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MaladiePlante</td>
+<td class="coverageStat">
+  <span class="percent">
+    6.7%
+  </span>
+  <span class="absValue">
+    (1/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5%
+  </span>
+  <span class="absValue">
+    (1/20)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MaladiePlante$HibernateProxy$KeaMkQuH</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    6.7%
+  </span>
+  <span class="absValue">
+    (1/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5%
+  </span>
+  <span class="absValue">
+    (1/20)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.diagnoPlant.models;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;
+&nbsp;import javax.persistence.Entity;
+&nbsp;import javax.persistence.GeneratedValue;
+&nbsp;import javax.persistence.Id;
+&nbsp;@Entity
+&nbsp;public class MaladiePlante implements Serializable {
+&nbsp;	private static final long serialVersionUID = 1L;
+&nbsp;	
+&nbsp;	@Id
+&nbsp;	@GeneratedValue
+&nbsp;	private Long idMaladiePlante;
+&nbsp;	private String nomMaladie;
+&nbsp;	private String symptomes;
+&nbsp;	private String causes;	
+&nbsp;	private String traitement;
+&nbsp;	private String actionsPreventives;
+&nbsp;	
+&nbsp;	public MaladiePlante() {
+<b class="fc">&nbsp;		super();</b>
+&nbsp;	}
+&nbsp;	public MaladiePlante( String nomMaladie, String symptomes, String causes, String traitement, String actionsPreventives) {
+<b class="nc">&nbsp;		super();</b>
+<b class="nc">&nbsp;		this.nomMaladie=nomMaladie;</b>
+<b class="nc">&nbsp;		this.symptomes=symptomes;</b>
+<b class="nc">&nbsp;		this.causes=causes;</b>
+<b class="nc">&nbsp;		this.traitement=traitement;</b>
+<b class="nc">&nbsp;		this.actionsPreventives=actionsPreventives;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @return the idMaladiePlante
+&nbsp;	 */
+&nbsp;	public Long getIdMaladiePlante() {
+<b class="nc">&nbsp;		return idMaladiePlante;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @return the nomMaladie
+&nbsp;	 */
+&nbsp;	public String getNomMaladie() {
+<b class="nc">&nbsp;		return nomMaladie;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @return the symptomes
+&nbsp;	 */
+&nbsp;	public String getSymptomes() {
+<b class="nc">&nbsp;		return symptomes;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @return the causes
+&nbsp;	 */
+&nbsp;	public String getCauses() {
+<b class="nc">&nbsp;		return causes;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @return the traitement
+&nbsp;	 */
+&nbsp;	public String getTraitement() {
+<b class="nc">&nbsp;		return traitement;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @return the actionsPreventives
+&nbsp;	 */
+&nbsp;	public String getActionsPreventives() {
+<b class="nc">&nbsp;		return actionsPreventives;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @param idMaladiePlante the idMaladiePlante to set
+&nbsp;	 */
+&nbsp;	public void setIdMaladiePlante(Long idMaladiePlante) {
+<b class="nc">&nbsp;		this.idMaladiePlante = idMaladiePlante;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @param nomMaladie the nomMaladie to set
+&nbsp;	 */
+&nbsp;	public void setNomMaladie(String nomMaladie) {
+<b class="nc">&nbsp;		this.nomMaladie = nomMaladie;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @param symptomes the symptomes to set
+&nbsp;	 */
+&nbsp;	public void setSymptomes(String symptomes) {
+<b class="nc">&nbsp;		this.symptomes = symptomes;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @param causes the causes to set
+&nbsp;	 */
+&nbsp;	public void setCauses(String causes) {
+<b class="nc">&nbsp;		this.causes = causes;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @param traitement the traitement to set
+&nbsp;	 */
+&nbsp;	public void setTraitement(String traitement) {
+<b class="nc">&nbsp;		this.traitement = traitement;</b>
+&nbsp;	}
+&nbsp;	/**
+&nbsp;	 * @param actionsPreventives the actionsPreventives to set
+&nbsp;	 */
+&nbsp;	public void setActionsPreventives(String actionsPreventives) {
+<b class="nc">&nbsp;		this.actionsPreventives = actionsPreventives;</b>
+&nbsp;	}
+&nbsp;	@Override
+&nbsp;	public String toString() {
+<b class="nc">&nbsp;		return &quot;MaladiePlante [idMaladiePlante=&quot; + idMaladiePlante + &quot;, nomMaladie=&quot; + nomMaladie + &quot;, symptomes=&quot;</b>
+&nbsp;				+ symptomes + &quot;, causes=&quot; + causes + &quot;, traitement=&quot; + traitement + &quot;, actionsPreventives=&quot;
+&nbsp;				+ actionsPreventives + &quot;]&quot;;
+&nbsp;	}
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-30 08:28</div>
+</div>
+</body>
+</html>

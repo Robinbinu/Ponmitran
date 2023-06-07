@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<title>Liste des maladie plantes</title>
+</head>
+<body>
+<!--===============================================================================================-->
+<nav class="navbar navbar-green default-color">
+	<div class="container-fluid">
+		<div class="navbar-header"> <a class="navbar-brand" href="#">Ponmitran</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a th:href="@{/pageexpert}">Home</a></li>
+			<li class="active"><a  th:href="@{/listMaladiePlant}">Consult a nutritionist</a></li>
+			<li><a href="ajoutermaladie">Post your query</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+		</ul>
+	</div>
+</nav>
+<!--===============================================================================================-->	
+
+	<div class="container spacer">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Search your issue</div>
+			<div class="panel-body">
+				<form th:action="@{listMaladiePlant}" method="GET">
+					<div class="mb-3">
+						<label></label> <input type="text" name="Chercher"
+							th:value="${Chercher}">
+						<button class="btn btn-primary">Search</button>
+					</div>
+				</form>
+				<div>
+					<nav aria-label="...">
+						<ul class="pager">
+						    <li class="next"><a th:href="@{listMaladiePlant}">
+						    	<span aria-hidden="true">&larr;</span>back</a>
+				    		</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div th:each="m:${pageMaladiePlante.content}">
+					<a th:text="${m.nomMaladie}"
+						th:href="@{info(id=${m.idMaladiePlante})}"></a>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-pills">
+			<li th:each="page,status:${pages}"><a
+				th:class="${status.index==currentPage}? 'btn btn-primary':'btn' "
+				th:text="${status.index}"
+				th:href="@{listMaladiePlant(page=${status.index},Chercher=${Chercher}, size=${size})}">
+			</a></li>
+		</ul>
+	</div>
+</body>
+</html>

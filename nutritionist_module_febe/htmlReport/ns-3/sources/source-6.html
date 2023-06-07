@@ -1,0 +1,187 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PredictionController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.diagnoPlant.controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: PredictionController (com.diagnoPlant.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PredictionController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.9%
+  </span>
+  <span class="absValue">
+    (1/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.diagnoPlant.controllers;
+&nbsp;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;import java.text.DecimalFormat;
+&nbsp;
+&nbsp;
+&nbsp;import org.springframework.stereotype.Controller;
+&nbsp;import org.springframework.ui.Model;
+&nbsp;
+&nbsp;import org.datavec.image.loader.NativeImageLoader;
+&nbsp;import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
+&nbsp;import org.deeplearning4j.nn.modelimport.keras.exceptions.InvalidKerasConfigurationException;
+&nbsp;import org.deeplearning4j.nn.modelimport.keras.exceptions.UnsupportedKerasConfigurationException;
+&nbsp;import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
+&nbsp;import org.nd4j.linalg.api.ndarray.INDArray;
+&nbsp;
+&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+&nbsp;
+&nbsp;import org.springframework.web.bind.annotation.RequestParam;
+&nbsp;
+&nbsp;import org.springframework.web.multipart.MultipartFile;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;@Controller
+<b class="fc">&nbsp;public class PredictionController {</b>
+&nbsp;	 
+&nbsp;   
+&nbsp;	@GetMapping(value =&quot;/modell&quot;)
+&nbsp;	public String telechargerImagee() {
+&nbsp;		
+&nbsp;		
+<b class="nc">&nbsp;		return&quot;imagepredict&quot;;</b>
+&nbsp;	
+&nbsp;	}
+&nbsp;	
+&nbsp;	@PostMapping(value=&quot;/model&quot;)
+&nbsp;	public String info(Model model,@RequestParam(&quot;photo&quot;)MultipartFile file) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException  {
+&nbsp;		
+&nbsp;	try {
+&nbsp;			
+&nbsp;			
+<b class="nc">&nbsp;			MultiLayerNetwork mode = KerasModelImport.importKerasSequentialModelAndWeights(&quot;../DiagnoPlant/src/main/resources/static/model4.h5&quot;,false);</b>
+&nbsp;		
+&nbsp;		    
+<b class="nc">&nbsp;	        NativeImageLoader loader = new NativeImageLoader(256, 256, 3); </b>
+&nbsp;	  
+&nbsp;	        
+<b class="nc">&nbsp;	        INDArray image = loader.asMatrix(file.getInputStream());</b>
+&nbsp;	  
+<b class="nc">&nbsp;	       image.divi(255.0);</b>
+&nbsp;	       
+&nbsp;	  
+<b class="nc">&nbsp;	       DecimalFormat f = new DecimalFormat();</b>
+<b class="nc">&nbsp;		    f.setMaximumFractionDigits(6);</b>
+&nbsp;		    
+&nbsp;		 
+&nbsp;		  
+<b class="nc">&nbsp;	       model.addAttribute(&quot;cas1&quot;,&quot;Bacteriel_spot: &quot; +f.format(mode.output(image).getDouble(0)));</b>
+<b class="nc">&nbsp;	       model.addAttribute(&quot;cas2&quot;,&quot;Early_Blight: &quot; +f.format(mode.output(image).getDouble(1)));</b>
+<b class="nc">&nbsp;	       model.addAttribute(&quot;cas3&quot;,&quot;Late_Blight: &quot; +f.format(mode.output(image).getDouble(2)));</b>
+<b class="nc">&nbsp;	       model.addAttribute(&quot;cas4&quot;,&quot;Target_Spot: &quot; +f.format(mode.output(image).getDouble(3)));</b>
+<b class="nc">&nbsp;	       model.addAttribute(&quot;cas5&quot;,&quot;Healthy: &quot; +f.format(mode.output(image).getDouble(4)));</b>
+&nbsp;	       
+&nbsp;	       
+&nbsp;		}
+<b class="nc">&nbsp;		catch(IOException | InvalidKerasConfigurationException | UnsupportedKerasConfigurationException error)</b>
+&nbsp;		{
+<b class="nc">&nbsp;		    error.printStackTrace();</b>
+<b class="nc">&nbsp;		}</b>
+&nbsp;		
+&nbsp;		
+<b class="nc">&nbsp;		return &quot;predictmodel&quot;;</b>
+&nbsp;	
+&nbsp;	}	
+&nbsp;	
+&nbsp;	
+&nbsp;	  
+&nbsp;	 
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-30 08:28</div>
+</div>
+</body>
+</html>

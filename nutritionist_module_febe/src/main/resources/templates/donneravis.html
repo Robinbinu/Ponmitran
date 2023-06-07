@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+<head>
+<title>Donner Avis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<!--===============================================================================================-->
+<nav class="navbar navbar-green default-color">
+	<div class="container-fluid">
+		<div class="navbar-header"> <a class="navbar-brand" href="#">Ponmitran</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a th:href="@{/pageexpert}">Home</a></li>
+			<li class="active"><a  th:href="@{/listMaladiePlant}">Consult a nutritionist</a></li>
+			<li><a href="ajoutermaladie">Post your query</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+		</ul>
+	</div>
+</nav>
+<!--===============================================================================================-->	
+
+<body>
+	
+	<div align="center">
+		<h1>Send to the Nutritionist</h1>
+	</div>
+
+	
+	<br />
+
+	<div style="margin: 30px 50px">
+		<table>
+			<thead>
+				<tr>
+					<th>your image</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="e:${image}">
+
+					<td th:text="${e.image}"></td>
+
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+
+	<div align="center">
+		<img th:src="@{pageexpert (id=${image.id})}" width="300" height="300" /><br>
+	</div>
+
+
+
+	 
+
+	<div style="margin: 30px 50px" class="panel panel-primary">
+		<div class="panel-heading">Choose the feed type :</div>
+			<div class="panel-body">
+				<form action="#" th:action="@{/donneravis}" name='f'
+					th:object="${magic}" method="post">
+					<!--       <form action="#" th:action="@{/avis}"  th:object="${maladiePlante}"  method="get" > -->
+		
+		
+		
+		
+					<input type="hidden" th:field="*{id}"> 
+					<input type="hidden" th:field="*{image}">
+					<input type="hidden" th:field="*{user}">
+					<select th:field="*{maladiePlante}">
+						<option value=""></option>		
+						<option th:each="i:${maladie}" th:value="${i.idMaladiePlante}"
+							th:text="${i.nomMaladie}">
+						</option>
+					</select><br><br>
+		
+		
+					<label>suggestions</label><br>
+					<textarea  th:field="*{infosCompl}"></textarea> <br>
+					<button class="btn btn-primary">Enter</button>
+		
+				</form>
+			</div>
+	</div>
+
+
+</body>
+</html>
